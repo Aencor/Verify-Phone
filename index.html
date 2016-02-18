@@ -1,0 +1,35 @@
+<html>
+<title>Formatear Numero</title>
+<head>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+
+		$('#phone').change(function(){
+			var phone = $('#phone').val(); // Cachamos el valor del input Phone
+
+			if(phone.length < 8){ // Si el input tiene menos de 8 caracteres
+				$('.error').html('El teléfono debe contener al menos 8 caracteres');
+			} else { // Si el input tiene más de 8 caracteres
+			var result = phone.match(new RegExp('.{1,'+2+'}', 'g')), // En la expresión regular revisamos el valor del input y lo dividimos de 2 en 2
+				telefono = result[0] +' '+result[1]+' '+result[2]+' '+result[3]+' '+result[4] // Nos arroja un array de la cadena ya solamente la ordenamos como queremos mostrarla
+			$('#phone').val(telefono);	// Mostramos la cadena modificada en el input
+
+			$('.error').html('');
+			}
+		});
+	});
+
+
+</script>
+</head>
+
+<body>
+
+<form>
+<input type="text" id="phone" maxlength="10">
+<div class="error"></div>
+</form>
+
+</body>
+</html>
